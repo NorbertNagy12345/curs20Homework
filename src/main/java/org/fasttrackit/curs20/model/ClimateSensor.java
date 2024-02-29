@@ -18,5 +18,5 @@ public class ClimateSensor {
     @Column
     private int humidity;
     @Column
-    private int AirQualityInPM;
+    private int airQualityInPM;
 }
