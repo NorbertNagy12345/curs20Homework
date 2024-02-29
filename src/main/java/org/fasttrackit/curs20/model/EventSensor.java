@@ -16,7 +16,7 @@ public class EventSensor {
     @Column
     private boolean smokeSensor;
     @Column
-    private boolean gazDetector;
+    private boolean gasDetector;
     @Column
     private boolean floodDetector;
 }
