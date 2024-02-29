@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.fasttrackit</groupId>
-	<artifactId>curs20</artifactId>
+	<artifactId>smartHome</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>curs20</name>
 	<description>curs 20 code</description>
