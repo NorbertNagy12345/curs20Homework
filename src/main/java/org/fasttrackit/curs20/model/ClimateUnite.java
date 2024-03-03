@@ -21,7 +21,7 @@ public class ClimateUnite {
     @Column
     private int setTemperature;
     @Column
-   private boolean state;
+    private boolean state;
     @Column
     private boolean maintenance;
 }

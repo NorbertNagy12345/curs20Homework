@@ -30,5 +30,5 @@ public class Room {
     @JsonIgnore
     private List<SmartLight> smartLights;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<ClimateUnite> climateUnites;
+    private ClimateUnite climateUnite;
 }
