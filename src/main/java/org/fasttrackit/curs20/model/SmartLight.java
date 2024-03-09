@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,14 +19,11 @@ public class SmartLight {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
     private int lightTemperatureInKelvin;
-    @Column
     private int intensityInLumen;
-    @Column
     private boolean state;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JsonIgnore
-    private List<Room> room;
+    private List<Room> rooms;
 }

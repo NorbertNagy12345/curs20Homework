@@ -18,10 +18,7 @@ public class ClimateUnite {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
     private int setTemperature;
-    @Column
     private boolean state;
-    @Column
     private boolean maintenance;
 }
