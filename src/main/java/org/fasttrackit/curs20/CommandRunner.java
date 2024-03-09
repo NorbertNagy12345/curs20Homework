@@ -24,14 +24,12 @@ public class CommandRunner implements CommandLineRunner {
                         .sizeInSquareMeter(25)
                         .smartLights(
                                 SmartLight.builder()
-                                        .id(1L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
                                         .build())
                         .smartLights(
                                 SmartLight.builder()
-                                        .id(2L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
@@ -46,7 +44,6 @@ public class CommandRunner implements CommandLineRunner {
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
-                                .id(1L)
                                 .build())
                         .build(),
                 Room.builder()
@@ -54,14 +51,12 @@ public class CommandRunner implements CommandLineRunner {
                         .sizeInSquareMeter(35)
                         .smartLights(
                                 SmartLight.builder()
-                                        .id(1L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
                                         .build())
                         .smartLights(
                                 SmartLight.builder()
-                                        .id(2L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
@@ -76,7 +71,6 @@ public class CommandRunner implements CommandLineRunner {
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
-                                .id(1L)
                                 .build())
                         .build()
         ));
