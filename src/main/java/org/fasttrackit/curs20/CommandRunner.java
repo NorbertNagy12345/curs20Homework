@@ -22,19 +22,21 @@ public class CommandRunner implements CommandLineRunner {
                 Room.builder()
                         .name("Kitchen")
                         .sizeInSquareMeter(25)
-                        .smartLights(List.of(
+                        .smartLights(
                                 SmartLight.builder()
                                         .id(1L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
-                                        .build(),
+                                        .build())
+                        .smartLights(
                                 SmartLight.builder()
                                         .id(2L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
-                                        .build()))
+                                        .build()
+                        )
                         .climateSensor(ClimateSensor.builder()
                                 .airQualityInPM(5)
                                 .humidity(60)
@@ -50,19 +52,21 @@ public class CommandRunner implements CommandLineRunner {
                 Room.builder()
                         .name("BedRoom")
                         .sizeInSquareMeter(35)
-                        .smartLights(List.of(
+                        .smartLights(
                                 SmartLight.builder()
                                         .id(1L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
-                                        .build(),
+                                        .build())
+                        .smartLights(
                                 SmartLight.builder()
                                         .id(2L)
                                         .state(true)
                                         .intensityInLumen(700)
                                         .lightTemperatureInKelvin(5000)
-                                        .build()))
+                                        .build()
+                        )
                         .climateSensor(ClimateSensor.builder()
                                 .airQualityInPM(5)
                                 .humidity(60)

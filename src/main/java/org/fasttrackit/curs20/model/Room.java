@@ -28,7 +28,7 @@ public class Room {
     private EventSensor eventSensor;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JsonIgnore
-    private List<SmartLight> smartLights;
+    private SmartLight smartLights;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private ClimateUnite climateUnite;
 }

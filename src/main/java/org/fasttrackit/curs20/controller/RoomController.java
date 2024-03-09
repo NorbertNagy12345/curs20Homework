@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("rooms")
@@ -16,7 +17,7 @@ public class RoomController {
     private final RoomService roomService;
 
     @GetMapping
-    public List<Room> getAll(Room room){
+    public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 }
