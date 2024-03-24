@@ -1,4 +1,4 @@
-package org.fasttrackit.curs20.model;
+package org.fasttrackit.model;
 
 
 import jakarta.persistence.Entity;
