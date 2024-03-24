@@ -4,10 +4,12 @@ package org.fasttrackit.curs20;
 import lombok.RequiredArgsConstructor;
 import org.fasttrackit.curs20.model.SmartLight;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@EnableScheduling
 @Component
 @RequiredArgsConstructor
 public class CommandRunner implements CommandLineRunner {
@@ -67,5 +69,9 @@ public class CommandRunner implements CommandLineRunner {
                                 .build())
                         .build()
         ));
+    }
+
+    public void random() {
+
     }
 }
