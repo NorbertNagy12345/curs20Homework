@@ -1,13 +1,12 @@
 package org.fasttrackit.curs20.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -21,14 +20,20 @@ public class Room {
     @Column
     private String name;
     @Column
+    private int temperature;
+    @Column
+    private int humidity;
+    @Column
+    private int airQualityInPM;
+    @Column
     private int sizeInSquareMeter;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private ClimateSensor climateSensor;
+    private org.fasttrackit.curs20.model.ClimateSensor climateSensor;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private EventSensor eventSensor;
+    private org.fasttrackit.curs20.model.EventSensor eventSensor;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JsonIgnore
     private SmartLight smartLights;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private ClimateUnite climateUnite;
+    private org.fasttrackit.curs20.model.ClimateUnite climateUnite;
 }

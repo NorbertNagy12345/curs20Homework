@@ -1,11 +1,8 @@
 package org.fasttrackit.curs20;
 
+
 import lombok.RequiredArgsConstructor;
-import org.fasttrackit.curs20.model.ClimateSensor;
-import org.fasttrackit.curs20.model.ClimateUnite;
-import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.model.SmartLight;
-import org.fasttrackit.curs20.repository.RoomRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,14 +11,17 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class CommandRunner implements CommandLineRunner {
-    private final RoomRepository roomRepository;
+    private final org.fasttrackit.curs20.repository.RoomRepository roomRepository;
 
     @Override
     public void run(String... args) {
-        roomRepository.saveAll(List.of(
-                Room.builder()
+        List<org.fasttrackit.curs20.model.Room> rooms = roomRepository.saveAll(List.of(
+                org.fasttrackit.curs20.model.Room.builder()
                         .name("Kitchen")
                         .sizeInSquareMeter(25)
+                        .airQualityInPM(5)
+                        .humidity(60)
+                        .temperature(22)
                         .smartLights(
                                 SmartLight.builder()
                                         .state(true)
@@ -35,20 +35,18 @@ public class CommandRunner implements CommandLineRunner {
                                         .lightTemperatureInKelvin(5000)
                                         .build()
                         )
-                        .climateSensor(ClimateSensor.builder()
-                                .airQualityInPM(5)
-                                .humidity(60)
-                                .temperature(22)
-                                .build())
-                        .climateUnite(ClimateUnite.builder()
+                        .climateUnite(org.fasttrackit.curs20.model.ClimateUnite.builder()
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
                                 .build())
                         .build(),
-                Room.builder()
+                org.fasttrackit.curs20.model.Room.builder()
                         .name("BedRoom")
                         .sizeInSquareMeter(35)
+                        .airQualityInPM(5)
+                        .humidity(60)
+                        .temperature(22)
                         .smartLights(
                                 SmartLight.builder()
                                         .state(true)
@@ -62,12 +60,7 @@ public class CommandRunner implements CommandLineRunner {
                                         .lightTemperatureInKelvin(5000)
                                         .build()
                         )
-                        .climateSensor(ClimateSensor.builder()
-                                .airQualityInPM(5)
-                                .humidity(60)
-                                .temperature(22)
-                                .build())
-                        .climateUnite(ClimateUnite.builder()
+                        .climateUnite(org.fasttrackit.curs20.model.ClimateUnite.builder()
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
