@@ -28,12 +28,12 @@ public class Room {
     @Column
     private int sizeInSquareMeter;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private org.fasttrackit.curs20.model.ClimateSensor climateSensor;
+    private ClimateSensor climateSensor;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private org.fasttrackit.curs20.model.EventSensor eventSensor;
+    private EventSensor eventSensor;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JsonIgnore
     private SmartLight smartLights;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private org.fasttrackit.curs20.model.ClimateUnite climateUnite;
+    private ClimateUnite climateUnite;
 }

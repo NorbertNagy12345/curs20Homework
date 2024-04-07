@@ -31,9 +31,21 @@ public class RoomService {
         return foundRoom;
     }
 
-    public Room saveRoom(Room room) {
+
+    public Room addNewRoom(Room room) {
         return roomRepository.save(room);
     }
 
+    public Room updateRoom(Long id, Room room) {
+        Room foundRoom = getRoomsById(id);
+        Room updatedRoom = Room.builder()
+                .name(foundRoom.getName())
+                .id(foundRoom.getId())
+                .sizeInSquareMeter(foundRoom.getSizeInSquareMeter())
+                .temperature(foundRoom.getTemperature())
+                .smartLights(foundRoom.getSmartLights())
+                .build();
+        return roomRepository.save(updatedRoom);
+    }
 
 }

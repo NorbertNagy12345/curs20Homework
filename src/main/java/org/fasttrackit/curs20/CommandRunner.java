@@ -2,6 +2,9 @@ package org.fasttrackit.curs20;
 
 
 import lombok.RequiredArgsConstructor;
+import org.fasttrackit.curs20.model.ClimateUnite;
+import org.fasttrackit.curs20.model.EventSensor;
+import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.model.SmartLight;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -37,13 +40,19 @@ public class CommandRunner implements CommandLineRunner {
                                         .lightTemperatureInKelvin(5000)
                                         .build()
                         )
+                        .eventSensor(EventSensor.builder()
+                                .floodDetector(false)
+                                .gasDetector(false)
+                                .smokeSensor(false)
+                                .build()
+                        )
                         .climateUnite(org.fasttrackit.curs20.model.ClimateUnite.builder()
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
                                 .build())
                         .build(),
-                org.fasttrackit.curs20.model.Room.builder()
+                Room.builder()
                         .name("BedRoom")
                         .sizeInSquareMeter(35)
                         .airQualityInPM(5)
@@ -62,7 +71,13 @@ public class CommandRunner implements CommandLineRunner {
                                         .lightTemperatureInKelvin(5000)
                                         .build()
                         )
-                        .climateUnite(org.fasttrackit.curs20.model.ClimateUnite.builder()
+                        .eventSensor(EventSensor.builder()
+                                .floodDetector(false)
+                                .gasDetector(false)
+                                .smokeSensor(false)
+                                        .build()
+                                )
+                        .climateUnite(ClimateUnite.builder()
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
