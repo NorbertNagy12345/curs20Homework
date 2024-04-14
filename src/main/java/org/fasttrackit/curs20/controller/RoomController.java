@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("rooms")
+@CrossOrigin(value = "http://localhost:4200")
 public class RoomController {
     private final RoomService roomService;
 
