@@ -2,7 +2,7 @@ package org.fasttrackit.curs20.service;
 
 
 import org.fasttrackit.curs20.model.Room;
-import org.fasttrackit.curs20.repository.RoomRepository;
+
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -30,7 +30,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomRepository.findAll();
+            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setSmokeDetected(true));
             System.out.println("Smoke detected");
         }
@@ -40,7 +40,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomRepository.findAll();
+            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setGasDetector(true));
             System.out.println("Gas detected");
         }
@@ -50,7 +50,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomRepository.findAll();
+            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setFloodDetector(true));
             System.out.println("Flood detected");
         }
