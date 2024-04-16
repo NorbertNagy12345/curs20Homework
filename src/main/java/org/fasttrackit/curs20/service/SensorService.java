@@ -11,9 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class SensorService {
-    RoomService roomService;
     private final ScheduledExecutorService scheduler;
-    RoomRepository roomRepository;
+     org.fasttrackit.curs20.repository.RoomRepository roomRepository;
 
     public SensorService() {
         scheduler = Executors.newScheduledThreadPool(1);
@@ -31,7 +30,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomService.getAllRooms();
+            List<Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setSmokeDetected(true));
             System.out.println("Smoke detected");
         }
@@ -41,7 +40,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomService.getAllRooms();
+            List<Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setGasDetector(true));
             System.out.println("Gas detected");
         }
@@ -51,7 +50,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<Room> allRooms = roomService.getAllRooms();
+            List<Room> allRooms = roomRepository.findAll();
             allRooms.forEach(r -> r.getEventSensor().setFloodDetector(true));
             System.out.println("Flood detected");
         }
