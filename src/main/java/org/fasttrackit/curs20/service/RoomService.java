@@ -6,6 +6,7 @@ import org.fasttrackit.curs20.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -22,7 +23,7 @@ public class RoomService {
 
     public Room getRoomsById(Long id) {
         return roomRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Country with id:%s was not found".formatted(id)));
+                .orElseThrow(() -> new ResourceNotFoundException("Rooms with id:%s was not found".formatted(id)));
     }
 
     public Room deleteById(Long id) {
@@ -46,6 +47,11 @@ public class RoomService {
                 .smartLights(foundRoom.getSmartLights())
                 .build();
         return roomRepository.save(updatedRoom);
+    }
+
+    public void updateRoomsSensor( List <Room> rooms ) {
+        rooms.forEach(room -> roomRepository.save(room));
+
     }
 
 }

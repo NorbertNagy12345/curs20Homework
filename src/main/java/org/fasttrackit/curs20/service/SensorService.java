@@ -21,9 +21,9 @@ public class SensorService {
 
     public SensorService() {
         scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(this::randomWaterSensorState, 0, 1, TimeUnit.SECONDS);
-        scheduler.scheduleAtFixedRate(this::randomSmokeSensorState, 0, 1, TimeUnit.SECONDS);
-        scheduler.scheduleAtFixedRate(this::randomGasSensorState, 0, 1, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::randomWaterSensorState, 1, 1, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(this::randomSmokeSensorState, 2, 1, TimeUnit.MINUTES);
+        scheduler.scheduleAtFixedRate(this::randomGasSensorState, 3, 1, TimeUnit.MINUTES);
         System.out.println("Sensor state changed");
     }
 
@@ -38,6 +38,7 @@ public class SensorService {
             List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setSmokeDetected(true));
             System.out.println("Smoke detected");
+            roomService.updateRoomsSensor(allRooms);
         }
     }
 
@@ -48,6 +49,7 @@ public class SensorService {
             List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setGasDetector(true));
             System.out.println("Gas detected");
+            roomService.updateRoomsSensor(allRooms);
         }
     }
 
@@ -58,6 +60,7 @@ public class SensorService {
             List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setFloodDetector(true));
             System.out.println("Flood detected");
+            roomService.updateRoomsSensor(allRooms);
         }
     }
 }
