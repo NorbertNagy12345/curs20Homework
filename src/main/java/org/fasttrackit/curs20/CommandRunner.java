@@ -6,6 +6,7 @@ import org.fasttrackit.curs20.model.ClimateUnite;
 import org.fasttrackit.curs20.model.EventSensor;
 import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.model.SmartLight;
+import org.fasttrackit.curs20.repository.RoomRepository;
 import org.fasttrackit.curs20.service.SensorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -17,12 +18,12 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class CommandRunner implements CommandLineRunner {
-    private final org.fasttrackit.curs20.repository.RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
 
     @Override
     public void run(String... args) {
-        List<org.fasttrackit.curs20.model.Room> rooms = roomRepository.saveAll(List.of(
-                org.fasttrackit.curs20.model.Room.builder()
+        List<Room> rooms = roomRepository.saveAll(List.of(
+                Room.builder()
                         .name("Kitchen")
                         .sizeInSquareMeter(25)
                         .airQualityInPM(5)
@@ -85,6 +86,6 @@ public class CommandRunner implements CommandLineRunner {
                                 .build())
                         .build()
         ));
-        new SensorService();
+
     }
 }

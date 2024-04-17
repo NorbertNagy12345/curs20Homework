@@ -2,6 +2,9 @@ package org.fasttrackit.curs20.service;
 
 
 import org.fasttrackit.curs20.model.Room;
+import org.fasttrackit.curs20.repository.RoomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
@@ -9,10 +12,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-
+@Service
 public class SensorService {
     private final ScheduledExecutorService scheduler;
-     org.fasttrackit.curs20.repository.RoomRepository roomRepository;
+@Autowired
+    RoomService roomService;
+
 
     public SensorService() {
         scheduler = Executors.newScheduledThreadPool(1);
@@ -30,7 +35,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
+            List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setSmokeDetected(true));
             System.out.println("Smoke detected");
         }
@@ -40,7 +45,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
+            List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setGasDetector(true));
             System.out.println("Gas detected");
         }
@@ -50,7 +55,7 @@ public class SensorService {
         int randomNum = ThreadLocalRandom.current().nextInt(0, 5);
         System.out.println(randomNum);
         if (randomNum == 2) {
-            List<org.fasttrackit.curs20.model.Room> allRooms = roomRepository.findAll();
+            List<Room> allRooms = roomService.getAllRooms();
             allRooms.forEach(r -> r.getEventSensor().setFloodDetector(true));
             System.out.println("Flood detected");
         }
