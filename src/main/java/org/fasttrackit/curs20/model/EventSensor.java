@@ -21,8 +21,5 @@ public class EventSensor {
     private boolean gasDetector;
     private boolean floodDetector;
 
-
-    public void setSmokeDetected(boolean b) {
-        this.smokeSensor = b;
-    }
 }
+
