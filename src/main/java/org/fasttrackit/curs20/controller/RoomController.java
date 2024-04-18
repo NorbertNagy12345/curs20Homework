@@ -3,6 +3,7 @@ package org.fasttrackit.curs20.controller;
 import lombok.RequiredArgsConstructor;
 import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.service.RoomService;
+import org.fasttrackit.curs20.service.SensorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @CrossOrigin(value = "http://localhost:4200")
 public class RoomController {
     private final RoomService roomService;
+    private final SensorService sensorService;
 
     @GetMapping
     public List<org.fasttrackit.curs20.model.Room> getAllRooms() {
@@ -32,5 +34,10 @@ public class RoomController {
     @PutMapping("{id}")
     public Room replaceRoom(@PathVariable Long id, @RequestBody Room room) {
         return roomService.updateRoom(id, room);
+    }
+
+    @PostMapping("/resetSensors")
+    public void resetAllSensors() {
+        sensorService.resetAllSensors();
     }
 }
