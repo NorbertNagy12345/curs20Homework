@@ -1,6 +1,8 @@
 package org.fasttrackit.curs20.service;
 
 import org.fasttrackit.curs20.exceptions.ResourceNotFoundException;
+import org.fasttrackit.curs20.model.ClimateUnite;
+import org.fasttrackit.curs20.model.EventSensor;
 import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.repository.RoomRepository;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,18 @@ public class RoomService {
 
 
     public Room addNewRoom(Room room) {
+        ClimateUnite climateUnite = new ClimateUnite();
+        climateUnite.setSetTemperature(22);
+        climateUnite.setState(false);
+        climateUnite.setMaintenance(false);
+        EventSensor eventSensor = new EventSensor();
+        eventSensor.setSmokeSensor(false);
+        eventSensor.setGasDetector(false);
+        eventSensor.setFloodDetector(false);
+        room.setClimateUnite(climateUnite);
+        room.setEventSensor(eventSensor);
+        room.setHumidity(60);
+        room.setAirQualityInPM(5);
         return roomRepository.save(room);
     }
 
