@@ -1,9 +1,12 @@
 package org.fasttrackit.curs20.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.fasttrackit.curs20.exceptions.ResourceNotFoundException;
 import org.fasttrackit.curs20.model.Room;
 import org.fasttrackit.curs20.service.RoomService;
 import org.fasttrackit.curs20.service.SensorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,4 +43,15 @@ public class RoomController {
     public void resetAllSensors() {
         sensorService.resetAllSensors();
     }
+
+    @PutMapping("/{roomId}/smartLight")
+    public ResponseEntity<Room> toggleSmartLight(@PathVariable Long roomId) {
+        try {
+            Room updatedRoom = roomService.toggleSmartLightState(roomId);
+            return new ResponseEntity<>(roomService.updateRoom(roomId,updatedRoom), HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

@@ -2,10 +2,7 @@ package org.fasttrackit.curs20.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +23,4 @@ public class SmartLight {
     private int intensityInLumen;
     private boolean state;
 
-    @OneToMany
-    @JsonIgnore
-    private List<org.fasttrackit.curs20.model.Room> rooms;
 }

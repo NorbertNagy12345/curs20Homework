@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EnableScheduling
@@ -29,26 +30,19 @@ public class CommandRunner implements CommandLineRunner {
                         .airQualityInPM(5)
                         .humidity(60)
                         .temperature(22)
-                        .smartLights(
-                                SmartLight.builder()
-                                        .state(true)
-                                        .intensityInLumen(700)
-                                        .lightTemperatureInKelvin(5000)
-                                        .build())
-                        .smartLights(
-                                SmartLight.builder()
-                                        .state(true)
-                                        .intensityInLumen(700)
-                                        .lightTemperatureInKelvin(5000)
-                                        .build()
-                        )
+                        .smartLight(
+                                 SmartLight.builder()
+                                         .state(true)
+                                         .intensityInLumen(750)
+                                         .lightTemperatureInKelvin(5000)
+                                         .build())
                         .eventSensor(EventSensor.builder()
                                 .floodDetector(false)
                                 .gasDetector(false)
                                 .smokeSensor(false)
                                 .build()
                         )
-                        .climateUnite(org.fasttrackit.curs20.model.ClimateUnite.builder()
+                        .climateUnite(ClimateUnite.builder()
                                 .state(false)
                                 .setTemperature(22)
                                 .maintenance(false)
@@ -60,19 +54,12 @@ public class CommandRunner implements CommandLineRunner {
                         .airQualityInPM(5)
                         .humidity(60)
                         .temperature(22)
-                        .smartLights(
+                        .smartLight(
                                 SmartLight.builder()
-                                        .state(true)
-                                        .intensityInLumen(700)
+                                        .state(false)
+                                        .intensityInLumen(750)
                                         .lightTemperatureInKelvin(5000)
                                         .build())
-                        .smartLights(
-                                SmartLight.builder()
-                                        .state(true)
-                                        .intensityInLumen(700)
-                                        .lightTemperatureInKelvin(5000)
-                                        .build()
-                        )
                         .eventSensor(EventSensor.builder()
                                 .floodDetector(false)
                                 .gasDetector(false)

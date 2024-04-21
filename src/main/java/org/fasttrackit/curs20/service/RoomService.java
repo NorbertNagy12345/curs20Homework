@@ -4,6 +4,7 @@ import org.fasttrackit.curs20.exceptions.ResourceNotFoundException;
 import org.fasttrackit.curs20.model.ClimateUnite;
 import org.fasttrackit.curs20.model.EventSensor;
 import org.fasttrackit.curs20.model.Room;
+import org.fasttrackit.curs20.model.SmartLight;
 import org.fasttrackit.curs20.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,14 @@ public class RoomService {
         roomRepository.deleteById(id);
         return foundRoom;
     }
+    public Room  toggleSmartLightState(Long roomId) {
+        Room room = getRoomsById(roomId);
+        if (room != null) {
+            room.getSmartLight().setState(!room.getSmartLight().isState());
+            return room;
+        }
+        throw new ResourceNotFoundException("Room not found with ID: " + roomId);
+    }
 
 
     public Room addNewRoom(Room room) {
@@ -44,6 +53,11 @@ public class RoomService {
         eventSensor.setSmokeSensor(false);
         eventSensor.setGasDetector(false);
         eventSensor.setFloodDetector(false);
+        SmartLight smartLight = new SmartLight();
+        smartLight.setState(false);
+        smartLight.setLightTemperatureInKelvin(5000);
+        smartLight.setIntensityInLumen(700);
+        room.setSmartLight(smartLight);
         room.setClimateUnite(climateUnite);
         room.setEventSensor(eventSensor);
         room.setHumidity(60);
@@ -57,8 +71,12 @@ public class RoomService {
                 .name(foundRoom.getName())
                 .id(foundRoom.getId())
                 .sizeInSquareMeter(foundRoom.getSizeInSquareMeter())
+                .humidity(foundRoom.getHumidity())
+                .airQualityInPM(foundRoom.getAirQualityInPM())
                 .temperature(foundRoom.getTemperature())
-                .smartLights(foundRoom.getSmartLights())
+                .eventSensor(foundRoom.getEventSensor())
+                .climateUnite(foundRoom.getClimateUnite())
+                .smartLight(foundRoom.getSmartLight())
                 .build();
         return roomRepository.save(updatedRoom);
     }
